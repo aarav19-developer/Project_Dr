@@ -1,0 +1,185 @@
+/* ============================================================
+   navbar.css — Top Navigation Bar
+   RED × BLACK — Dark Luxury Edition
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 64px;
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(232,25,44,0.15), 0 4px 32px rgba(0,0,0,0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  transition: background 0.3s;
+}
+
+/* Faint red line on top edge */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary) 40%, var(--ember) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ---- Brand ---- */
+.navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.55rem;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+.navbar-brand:hover { filter: drop-shadow(0 0 8px rgba(232,25,44,0.6)); }
+.navbar-brand span  { color: var(--text); }
+.navbar-brand-icon  {
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: var(--glow-sm);
+  flex-shrink: 0;
+}
+
+/* ---- Nav Links ---- */
+.navbar-links {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.88rem;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 3px; left: 50%; right: 50%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+  transition: left 0.25s ease, right 0.25s ease;
+}
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.04);
+}
+.nav-link:hover::after       { left: 20%; right: 20%; }
+.nav-link.active {
+  color: var(--primary);
+  background: var(--primary-faint);
+  border-color: var(--border-red);
+}
+.nav-link.active::after      { left: 20%; right: 20%; }
+
+/* ---- User Section ---- */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar-wrap {
+  position: relative;
+  cursor: pointer;
+}
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: block;
+}
+.user-avatar-wrap:hover .user-avatar {
+  box-shadow: var(--glow-sm);
+  transform: scale(1.06);
+}
+
+/* Online indicator dot */
+.user-avatar-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 9px;
+  height: 9px;
+  background: var(--green);
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(34,214,92,0.5);
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+/* ---- Notification Bell ---- */
+.navbar-notif {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+.navbar-notif:hover {
+  background: var(--primary-faint);
+  border-color: var(--border-red);
+  color: var(--primary);
+}
+.notif-dot {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  background: var(--primary);
+  border-radius: 50%;
+  border: 1.5px solid var(--bg);
+  box-shadow: 0 0 5px rgba(232,25,44,0.6);
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.8); }
+}

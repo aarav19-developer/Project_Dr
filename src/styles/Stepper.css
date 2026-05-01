@@ -1,0 +1,59 @@
+ 
+
+/* ============================================================
+   stepper.css — StepperForm component
+   ============================================================ */
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;                   /* gaps are handled by the line element */
+  margin-bottom: 2rem;
+  position: relative;
+}
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.stepper-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: #fff;
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all 0.3s;
+}
+.stepper-circle--active { border-color: var(--primary); color: var(--primary); background: #eff4ff; }
+.stepper-circle--done   { border-color: var(--green);   color: #fff;           background: var(--green); }
+
+.stepper-label {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: center;
+}
+.stepper-label--active { color: var(--primary); }
+
+/* Horizontal line connecting steps */
+.stepper-line {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 18px);    /* starts right after the circle */
+  width: calc(100% - 36px);  /* spans to the next circle */
+  height: 3px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+.stepper-line--done { background: var(--green); }

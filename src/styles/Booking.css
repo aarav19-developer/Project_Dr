@@ -1,0 +1,52 @@
+ 
+
+/* ============================================================
+   booking.css — BookAppointment page
+   ============================================================ */
+.booking-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.booking-step       { display: flex; flex-direction: column; }
+.step-title         { font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
+
+.booking-doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+.booking-doctor-img  { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+.booking-doctor-name { font-weight: 800; }
+.booking-doctor-spec { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+
+/* Summary box on step 3 */
+.summary-box {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.summary-row:last-child { border-bottom: none; padding-bottom: 0; }
+.summary-label  { color: var(--text-muted); font-weight: 600; }
+.summary-value  { font-weight: 700; text-align: right; max-width: 60%; }
+.summary-fee    { margin-top: 0.5rem; }
+.fee-highlight  { color: var(--primary); font-size: 1.1rem; }
