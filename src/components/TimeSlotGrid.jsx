@@ -5,7 +5,7 @@
 //   selected    → currently selected slot (string)
 //   onSelect    → function called when a slot is clicked
 // ============================================================
-import '../styles/timeslot.css'
+import '../styles/Timeslot.css'
 
 function TimeSlotGrid({ slots, selected, onSelect }) {
   return (

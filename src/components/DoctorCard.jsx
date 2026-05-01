@@ -4,7 +4,7 @@
 //   doctor   → one doctor object from mockDoctors.js
 //   onBook   → function to call when "Book Appointment" is clicked
 // ============================================================
-import '../styles/doctorcard.css'
+import '../styles/Doctorcard.css'
 
 function DoctorCard({ doctor, onBook }) {
   return (

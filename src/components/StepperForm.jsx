@@ -4,7 +4,7 @@
 //   steps       → array of step labels e.g. ["Select Slot", "Your Info", "Confirm"]
 //   currentStep → which step is active (0-indexed)
 // ============================================================
-import '../styles/stepper.css'
+import '../styles/Stepper.css'
 
 function StepperForm({ steps, currentStep }) {
   return (

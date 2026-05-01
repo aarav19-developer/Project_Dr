@@ -2,7 +2,7 @@
 // Navbar.jsx — Top navigation bar shown on all pages
 // ============================================================
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/navbar.css'
+import '../styles/Navbar.css'
 
 function Navbar() {
   const navigate = useNavigate()
