@@ -32,7 +32,7 @@ function Navbar() {
           alt="Aarav Harit"
           className="user-avatar"
         />
-        <span className="user-name">Aarav</span>
+        <span className="user-name">AARAV HARIT</span>
       </div>
     </nav>
   )

@@ -13,10 +13,10 @@ function Dashboard() {
       {/* Header */}
       <div className="dashboard-header">
         <div className="dashboard-greeting">
-          Good Morning, <span>Aarav! 👋</span>
+          Hey <span>AARAV HARIT! 👋</span>
         </div>
         <div className="dashboard-date">
-          Saturday, 25 April 2026 — Stay healthy today!
+          Stay healthy today!
         </div>
       </div>
 
