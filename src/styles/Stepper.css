@@ -1,16 +1,18 @@
- 
-
 /* ============================================================
    stepper.css — StepperForm component
+   HEALTH-TECH EDITION — Sky Blue × Teal × Slate
    ============================================================ */
+
 .stepper {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 0;                   /* gaps are handled by the line element */
+  gap: 0;
   margin-bottom: 2rem;
   position: relative;
+  animation: fadeIn 0.4s ease both;
 }
+
 .stepper-item {
   display: flex;
   flex-direction: column;
@@ -20,40 +22,107 @@
 }
 
 .stepper-circle {
-  width: 36px;
-  height: 36px;
+  width: 38px; height: 38px;
   border-radius: 50%;
-  border: 3px solid var(--border);
-  background: #fff;
+  border: 2.5px solid var(--border);
+  background: var(--card-bg);
   color: var(--text-muted);
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  transition: all 0.3s;
+  transition: all 0.35s cubic-bezier(0.34,1.46,0.64,1);
+  position: relative;
 }
-.stepper-circle--active { border-color: var(--primary); color: var(--primary); background: #eff4ff; }
-.stepper-circle--done   { border-color: var(--green);   color: #fff;           background: var(--green); }
+/* Outer glow ring (hidden by default) */
+.stepper-circle::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  transition: border-color 0.35s, opacity 0.35s;
+  opacity: 0;
+}
+
+.stepper-circle--active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-faint);
+  box-shadow: var(--glow-sm);
+  transform: scale(1.08);
+}
+.stepper-circle--active::before {
+  border-color: rgba(14,165,233,0.25);
+  opacity: 1;
+  animation: step-ring 2s ease infinite;
+}
+
+@keyframes step-ring {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%       { transform: scale(1.18); opacity: 0.3; }
+}
+
+.stepper-circle--done {
+  border-color: var(--teal);
+  color: #fff;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  box-shadow: var(--glow-teal);
+  animation: done-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes done-pop {
+  0%   { transform: scale(0.7); }
+  70%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
 
 .stepper-label {
-  margin-top: 0.4rem;
-  font-size: 0.78rem;
+  margin-top: 0.45rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   text-align: center;
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
 }
-.stepper-label--active { color: var(--primary); }
+.stepper-label--active {
+  color: var(--primary);
+}
+.stepper-label--done {
+  color: var(--teal);
+}
 
-/* Horizontal line connecting steps */
+/* Connecting line */
 .stepper-line {
   position: absolute;
-  top: 18px;
-  left: calc(50% + 18px);    /* starts right after the circle */
-  width: calc(100% - 36px);  /* spans to the next circle */
-  height: 3px;
+  top: 19px;
+  left: calc(50% + 19px);
+  width: calc(100% - 38px);
+  height: 2.5px;
   background: var(--border);
-  transition: background 0.3s;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: background 0.4s;
 }
-.stepper-line--done { background: var(--green); }
+/* Fill progress animation */
+.stepper-line--done {
+  background: var(--border);
+}
+.stepper-line--done::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--teal), var(--primary));
+  border-radius: 2px;
+  animation: line-fill 0.5s ease both;
+}
+
+@keyframes line-fill {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}

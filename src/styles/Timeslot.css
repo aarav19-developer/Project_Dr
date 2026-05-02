@@ -1,26 +1,114 @@
- 
 /* ============================================================
    timeslot.css — TimeSlotGrid component
+   HEALTH-TECH EDITION — Sky Blue × Teal × Slate
    ============================================================ */
-.timeslot-section { margin: 1.25rem 0; }
-.timeslot-title   { font-weight: 800; font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+
+.timeslot-section {
+  margin: 1.25rem 0;
+  animation: fadeUp 0.4s ease both;
+}
+.timeslot-title {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.timeslot-title::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--teal));
+  border-radius: 2px;
+}
 
 .timeslot-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
-.slot-btn {
-  padding: 0.5rem 1.1rem;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  background: #fff;
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.slot-btn:hover          { border-color: var(--primary); color: var(--primary); }
-.slot-btn--selected      { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-.no-slots { color: var(--text-muted); font-size: 0.9rem; }
+.slot-btn {
+  padding: 0.52rem 1.15rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.84rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.22s, background 0.22s, color 0.22s, transform 0.2s, box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUpIn 0.35s ease both;
+}
+
+/* Stagger slot animations */
+.slot-btn:nth-child(1)  { animation-delay: 0.02s; }
+.slot-btn:nth-child(2)  { animation-delay: 0.04s; }
+.slot-btn:nth-child(3)  { animation-delay: 0.06s; }
+.slot-btn:nth-child(4)  { animation-delay: 0.08s; }
+.slot-btn:nth-child(5)  { animation-delay: 0.10s; }
+.slot-btn:nth-child(6)  { animation-delay: 0.12s; }
+.slot-btn:nth-child(7)  { animation-delay: 0.14s; }
+.slot-btn:nth-child(8)  { animation-delay: 0.16s; }
+
+.slot-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--primary), var(--teal));
+  opacity: 0;
+  transition: opacity 0.22s;
+}
+.slot-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(14,165,233,0.15);
+}
+
+/* Selected state */
+.slot-btn--selected {
+  background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 3px 16px rgba(14,165,233,0.35);
+  transform: translateY(-1px);
+}
+.slot-btn--selected::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -40%;
+  width: 25%; height: 100%;
+  background: rgba(255,255,255,0.18);
+  transform: skewX(-18deg);
+  animation: shimmer-slot 1.8s ease 0.1s 1;
+}
+
+@keyframes shimmer-slot {
+  0%   { left: -40%; }
+  100% { left: 130%; }
+}
+
+.slot-btn:disabled,
+.slot-btn--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+.no-slots {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.75rem 0;
+  animation: fadeIn 0.3s ease;
+}
