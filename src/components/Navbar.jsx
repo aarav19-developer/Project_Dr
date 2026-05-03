@@ -29,7 +29,7 @@ function Navbar() {
       <div className="navbar-user">
         <img
           src="https://randomuser.me/api/portraits/men/1.jpg"
-          alt="Aarav Harit"
+          alt="AARAV HARIT"
           className="user-avatar"
         />
         <span className="user-name">AARAV HARIT</span>

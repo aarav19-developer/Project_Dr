@@ -11,7 +11,7 @@ export const doctors = [
     experience: "12 years",
     rating: 4.9,
     reviews: 214,
-    fee: 800,
+    fee: 2200,
     available: true,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
     hospital: "Apollo Hospital, Delhi",
